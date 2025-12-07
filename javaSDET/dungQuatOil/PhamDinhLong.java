@@ -8,8 +8,8 @@ public class PhamDinhLong {
         System.out.println(john.companyName);
         System.out.println(john.compayProduct);
         john.viewCompany();
-        john.viewPolicy();
-        john.viewFriendship();
-        john.viewKeySecret();
+//        john.viewPolicy();
+//        john.viewFriendship();
+//        john.viewKeySecret();
     }
 }

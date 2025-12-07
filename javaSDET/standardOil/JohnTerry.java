@@ -8,7 +8,7 @@ public class JohnTerry {
 
         JohnTerry johnTerry = new JohnTerry();
         //johnTerry.viewFriendship();
-        johnTerry.viewKeySecret();
+        //johnTerry.viewKeySecret();
     }
 
 

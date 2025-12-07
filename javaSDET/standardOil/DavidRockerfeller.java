@@ -6,7 +6,7 @@ public class DavidRockerfeller extends JohnRockerfeller{
         david.viewCompanyName();
         david.viewPolicy();
         david.viewFriendship();
-        david.viewKeySecret();
+        //david.viewKeySecret();
 
     }
 

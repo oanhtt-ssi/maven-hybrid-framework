@@ -13,6 +13,9 @@ import java.util.List;
 import java.util.Set;
 
 public class BasePage {
+    public static BasePage getBasePage(){
+        return new BasePage();
+    }
     public void openPageUrl(WebDriver driver, String Url){
         driver.get(Url);
     }
@@ -62,7 +65,7 @@ public class BasePage {
         return waitAlertPresence(driver).getText();
     }
 
-    private void sleepInSecond(long timeInSecond)  {
+    public void sleepInSecond(long timeInSecond)  {
         try {
             Thread.sleep(timeInSecond * 1000);
         } catch (InterruptedException e) {
@@ -318,8 +321,8 @@ public class BasePage {
                 .until(ExpectedConditions.invisibilityOfElementLocated(getByXpath(locator)));
     }
 
-    public void waitListElementInvisible(WebDriver driver, String locator){
-        new WebDriverWait(driver, Duration.ofSeconds(LONG_TIMEOUT))
+    public boolean waitListElementInvisible(WebDriver driver, String locator){
+       return new WebDriverWait(driver, Duration.ofSeconds(LONG_TIMEOUT))
                 .until(ExpectedConditions.invisibilityOfAllElements(getListElement(driver, locator)));
     }
 
@@ -331,6 +334,10 @@ public class BasePage {
     public void waitListElementPresence(WebDriver driver, String locator){
         new WebDriverWait(driver, Duration.ofSeconds(LONG_TIMEOUT))
                 .until(ExpectedConditions.presenceOfAllElementsLocatedBy(getByXpath(locator)));
+    }
+
+    public Boolean isLoadingIconDisappear(WebDriver driver) {
+        return waitListElementInvisible(driver, "//div[contains(@class,'oxd-loading-spinner')]");
     }
 
 

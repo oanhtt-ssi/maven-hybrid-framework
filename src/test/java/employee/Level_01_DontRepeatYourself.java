@@ -6,7 +6,7 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
-public class Employee_01_CreateEmployee {
+public class Level_01_DontRepeatYourself {
     private WebDriver driver;
 
     @BeforeClass

@@ -8,7 +8,7 @@ public class NelsonRockerfeller extends JohnRockerfeller {
         nelson.viewCompanyName();
         //nelson.viewPolicy();
         nelson.viewFriendship();
-        nelson.viewKeySecret();
+       // nelson.viewKeySecret();
 
     }
 

@@ -2,22 +2,11 @@
 
 <suite name="Orange HRM">
 
-    <test name="Run on CHROME" preserve-order="true">
-        <parameter name="browser" value="Chrome"/>
-        <classes>
-            <class name="employee.Level_03_Multiple_Browser"></class>
-        </classes>
-    </test>
-    <test name="Run on EDGE" preserve-order="true">
-        <parameter name="browser" value="Edge"/>
-        <classes>
-            <class name="employee.Level_03_Multiple_Browser"></class>
-        </classes>
-    </test>
+    <parameter name="Url" value="https://opensource-demo.orangehrmlive.com"/>
     <test name="Run on FIREFOX" preserve-order="true">
-        <parameter name="browser" value="Firefox"/>
+        <parameter name="Browser" value="Firefox"/>
         <classes>
-            <class name="employee.Level_03_Multiple_Browser"></class>
+            <class name="employee.Level_04_PageObjectPattern"></class>
         </classes>
     </test>
 

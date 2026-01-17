@@ -2,6 +2,7 @@ package pageObjects.orangehrm;
 
 import core.BasePage;
 import org.openqa.selenium.WebDriver;
+import pageUIs.orangehrm.BasePageUI;
 import pageUIs.orangehrm.PersonalDetailUI;
 
 public class PersonalDetailPO extends BasePage {
@@ -28,8 +29,8 @@ public class PersonalDetailPO extends BasePage {
 
 
     public JobPO openJobPage(){
-        waitElementClickable(driver, PersonalDetailUI.JOB_LINK);
-        clickToElement(driver, PersonalDetailUI.JOB_LINK);
+        waitElementClickable(driver, BasePageUI.JOB_LINK);
+        clickToElement(driver, BasePageUI.JOB_LINK);
         return  PageGeneratorGeneric.getPage(JobPO.class, driver);
     }
 }

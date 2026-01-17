@@ -2,11 +2,11 @@
 
 <suite name="Orange HRM">
 
-    <parameter name="Url" value="https://opensource-demo.orangehrmlive.com"/>
+    <parameter name="Url" value="http://localhost:8080/orangehrm"/>
     <test name="Run on FIREFOX" preserve-order="true">
         <parameter name="Browser" value="Firefox"/>
         <classes>
-            <class name="employee.Level_04_PageObjectPattern"></class>
+            <class name="employee.Level_07_Switch_Page"></class>
         </classes>
     </test>
 

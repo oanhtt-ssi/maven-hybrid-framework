@@ -15,9 +15,10 @@ public class EmployeeListPO extends BasePage {
         return isElementDisplayed(driver, EmployeeListUI.PIM_HEADER);
     }
 
-    public void clickToAddEmployeeButton() {
+    public AddEmployeePO clickToAddEmployeeButton() {
         waitElementVisible(driver, EmployeeListUI.ADD_EMPLOYEE_BUTTON);
         clickToElement(driver, EmployeeListUI.ADD_EMPLOYEE_BUTTON);
+        return PageGeneratorGeneric.getPage(AddEmployeePO.class,driver);
 
     }
 }

@@ -15,7 +15,7 @@ import pageObjects.orangehrm.*;
 
 import java.time.Duration;
 
-public class Level_04_PageObjectPattern extends BaseTest {
+public class Level_06_Page_Manager_III extends BaseTest {
     private WebDriver driver;
     private BasePage basePage = BasePage.getBasePage();
     private LoginPO loginPage;
@@ -23,6 +23,7 @@ public class Level_04_PageObjectPattern extends BaseTest {
     private EmployeeListPO employeeListPOPage;
     private PersonalDetailPO personalDetailPage;
     private AddEmployeePO addEmployeePage;
+    private ContactDetailPO contactDetailPO;
     String firstName, lastName, fullName, emailAddress, password, employeeID, adminUsername, adminPassword;
 
 
@@ -32,6 +33,9 @@ public class Level_04_PageObjectPattern extends BaseTest {
     public void beforeClass(String browserName, String url){
         driver = getBrowserDriver(browserName, url);
 
+
+        loginPage = PageGeneratorManager.getLoginPage(driver);
+
         firstName = "Mariah";
         lastName = "Carey";
         adminUsername = "oanhtt";
@@ -39,9 +43,9 @@ public class Level_04_PageObjectPattern extends BaseTest {
         fullName = firstName + " " + lastName;
         emailAddress= "mariah" + getRandomNumber() + "@hotmail.com";
         password = "Test@123";
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
+        //driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
 
-        loginPage = new LoginPO(driver);
+
 
     }
 
@@ -50,25 +54,21 @@ public class Level_04_PageObjectPattern extends BaseTest {
 
         loginPage.enterToUsernameTextbox(adminUsername);
         loginPage.enterToPasswordTextbox(adminPassword);
-        loginPage.clickToLoginButton();
+        dashboardPage = loginPage.clickToLoginButton();
 
-        dashboardPage = new DashboardPO(driver);
         Assert.assertTrue(dashboardPage.isLoadingIconDisappear(driver));
         Assert.assertTrue(dashboardPage.isDashboardHeaderDisplayed());
+        dashboardPage.sleepInSecond(2);
 
-        dashboardPage.clickToPIMModule();
-
-        employeeListPOPage = new EmployeeListPO(driver);
+        employeeListPOPage = dashboardPage.clickToPIMModule();
         Assert.assertTrue(employeeListPOPage.isLoadingIconDisappear(driver));
         Assert.assertTrue(employeeListPOPage.isPIMHeaderDisplayed());
 
-        employeeListPOPage.clickToAddEmployeeButton();
-
-        addEmployeePage = new AddEmployeePO(driver);
+        addEmployeePage = employeeListPOPage.clickToAddEmployeeButton();
         Assert.assertTrue(addEmployeePage.isLoadingIconDisappear(driver));
+
         addEmployeePage.enterToFirstNameTextbox(firstName);
         addEmployeePage.enterToLastNameTextbox(lastName);
-
         employeeID = addEmployeePage.getEmployeeIDValue();
 
         addEmployeePage.clickToCreateLoginDetailsCheckbox();
@@ -77,21 +77,20 @@ public class Level_04_PageObjectPattern extends BaseTest {
         addEmployeePage.enterToPasswordTextbox(password);
         addEmployeePage.enterToConfirmPasswordTextbox(password);
 
-        addEmployeePage.clickToSaveButton();
-        addEmployeePage.sleepInSecond(2);
-
-        Assert.assertTrue(addEmployeePage.isSuccessfullySavedMessageDisplayed());
-
-        personalDetailPage = new PersonalDetailPO(driver);
+        personalDetailPage = addEmployeePage.clickToSaveButton();
 
         Assert.assertTrue(personalDetailPage.isLoadingIconDisappear(driver));
-        Assert.assertTrue(personalDetailPage.isLoadingIconDisappear(driver));
+        personalDetailPage.sleepInSecond(2);
 
         Assert.assertEquals(personalDetailPage.getFirstnameTextboxValue(), firstName);
         Assert.assertEquals(personalDetailPage.getLastnameTextboxValue(), lastName);
         Assert.assertEquals(personalDetailPage.getEmployeeTextboxValue(), employeeID);
 
 
+    }
+
+    public void Employee_02_Contact_Detail(){
+        contactDetailPO = personalDetailPage.openContactDetailPage(driver);
     }
 
     private Boolean isMessageSuccessDisplayed() {

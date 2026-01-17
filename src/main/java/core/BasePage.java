@@ -7,6 +7,8 @@ import org.openqa.selenium.support.Color;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import pageObjects.orangehrm.*;
+import pageUIs.orangehrm.*;
 
 import java.time.Duration;
 import java.util.List;
@@ -339,6 +341,65 @@ public class BasePage {
     public Boolean isLoadingIconDisappear(WebDriver driver) {
         return waitListElementInvisible(driver, "//div[contains(@class,'oxd-loading-spinner')]");
     }
+
+
+    public Boolean isLoadingSpinnerDisappear(WebDriver driver) {
+        return waitListElementInvisible(driver, BasePageUI.SPINNER_ICON);
+    }
+
+    public DashboardPO clickToLoginButton(WebDriver driver) {
+        waitElementClickable(driver, LoginUI.LOGIN_BUTTON);
+        clickToElement(driver,LoginUI.LOGIN_BUTTON);
+        return PageGeneratorGeneric.getPage(DashboardPO.class, driver);
+
+    }
+
+    public PersonalDetailPO clickToSaveButton(WebDriver driver) {
+        waitElementClickable(driver, AddEmployeeUI.SAVE_BUTTON);
+        clickToElement(driver, AddEmployeeUI.SAVE_BUTTON);
+        waitListElementInvisible(driver, AddEmployeeUI.SPINNER_ICON);
+        return PageGeneratorGeneric.getPage(PersonalDetailPO.class,driver);
+    }
+
+    public JobPO openJobPage(WebDriver driver){
+        waitElementClickable(driver, BasePageUI.JOB_LINK);
+        clickToElement(driver, BasePageUI.JOB_LINK);
+        return  PageGeneratorGeneric.getPage(JobPO.class,driver);
+    }
+
+    public EmployeeListPO clickToPIMModule(WebDriver driver) {
+        waitElementClickable(driver, DashboardUI.PIM_MODULE);
+        clickToElement(driver,DashboardUI.PIM_MODULE);
+        return PageGeneratorGeneric.getPage(EmployeeListPO.class,driver);
+
+    }
+
+    public PersonalDetailPO openPersonalDetailPage(WebDriver driver){
+        waitElementClickable(driver, BasePageUI.PERSONAL_DETAIL_LINK);
+        clickToElement(driver, BasePageUI.PERSONAL_DETAIL_LINK);
+        return PageGeneratorGeneric.getPage(PersonalDetailPO.class, driver);
+    }
+
+    public AddEmployeePO clickToAddEmployeeButton(WebDriver driver) {
+        waitElementVisible(driver, EmployeeListUI.ADD_EMPLOYEE_BUTTON);
+        clickToElement(driver, EmployeeListUI.ADD_EMPLOYEE_BUTTON);
+        return PageGeneratorGeneric.getPage(AddEmployeePO.class,driver);
+
+    }
+
+    public DependentsPO openDependentPage(WebDriver driver){
+        waitElementClickable(driver, BasePageUI.DEPENDENT_LINK);
+        clickToElement(driver, BasePageUI.DEPENDENT_LINK);
+        return PageGeneratorGeneric.getPage(DependentsPO.class, driver);
+
+    }
+
+    public ContactDetailPO openContactDetailPage(WebDriver driver) {
+        waitElementClickable(driver, BasePageUI.CONTACT_DETAIL_LINK);
+        clickToElement(driver, BasePageUI.CONTACT_DETAIL_LINK);
+        return PageGeneratorGeneric.getPage(ContactDetailPO.class,driver);
+    }
+
 
 
     private final int SHORT_TIMEOUT = 10;

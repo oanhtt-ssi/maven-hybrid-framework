@@ -10,4 +10,5 @@ public class AddEmployeeUI {
     public static final String CONFIRM_PASSWORD_TEXTBOX = "//label[text()='Confirm Password']/parent::div/following-sibling::div/input";
     public static final String SAVE_BUTTON = "//button[@type='submit']";
     public static final String SUCCESSFULL_SAVE_MESSAGE = "//p[text()='Successfully Saved']";
+    public static final String SPINNER_ICON = "//div[contains(@class,'oxd-loading-spinner')]";
 }

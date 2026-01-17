@@ -23,9 +23,11 @@ public class LoginPO extends BasePage {
         senKeyToElement(driver, LoginUI.PASSWORD_TEXTBOX,password);
     }
 
-    public void clickToLoginButton() {
+    public DashboardPO clickToLoginButton() {
         waitElementClickable(driver, LoginUI.LOGIN_BUTTON);
         clickToElement(driver,LoginUI.LOGIN_BUTTON);
+        return PageGeneratorGeneric.getPage(DashboardPO.class, driver);
 
     }
+
 }

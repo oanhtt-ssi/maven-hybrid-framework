@@ -24,4 +24,12 @@ public class PersonalDetailPO extends BasePage {
         waitElementPresence(driver, PersonalDetailUI.EMPLOYEE_ID_TEXTBOX);
         return getElementDOMProperty(driver, PersonalDetailUI.EMPLOYEE_ID_TEXTBOX, "value");
     }
+
+
+
+    public JobPO openJobPage(){
+        waitElementClickable(driver, PersonalDetailUI.JOB_LINK);
+        clickToElement(driver, PersonalDetailUI.JOB_LINK);
+        return  PageGeneratorGeneric.getPage(JobPO.class, driver);
+    }
 }

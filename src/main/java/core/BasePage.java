@@ -76,6 +76,18 @@ public class BasePage {
         }
     }
 
+    public String getCurrentWindowID(WebDriver driver){
+        return driver.getWindowHandle();
+    }
+
+    public void openUrlByNewTab(WebDriver driver, String url){
+        driver.switchTo().newWindow(WindowType.TAB).get(url);
+    }
+
+    public void openUrlByNewWindow(WebDriver driver, String url){
+        driver.switchTo().newWindow(WindowType.WINDOW).get(url);
+    }
+
     public void switchToWindowByID(WebDriver driver, String windowID){
         Set<String> allWindowIDs = driver.getWindowHandles();
 
@@ -365,13 +377,19 @@ public class BasePage {
         return PageGenerator.getPage(AdminLoginPO.class, driver);
     }
 
-    public AdminLoginPO openAdminSite(WebDriver driver, String adminUrl) {
+    public void openAdminSite(WebDriver driver, String adminUrl) {
         openPageUrl(driver, adminUrl);
-        return PageGenerator.getPage(AdminLoginPO.class, driver);
+
     }
 
     public UserHomePO openUserSite(WebDriver driver, String userUrl) {
         openPageUrl(driver, userUrl);
+        return PageGenerator.getPage(UserHomePO.class, driver);
+    }
+
+    public UserHomePO openHomeLogo(WebDriver driver){
+        waitElementClickable(driver, BasePageUI.USER_HOME_LOGO);
+        clickToElement(driver, BasePageUI.USER_HOME_LOGO);
         return PageGenerator.getPage(UserHomePO.class, driver);
     }
 

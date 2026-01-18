@@ -29,7 +29,7 @@ public class BaseTest {
 
 
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
-        driver.manage().window().maximize();
+        //driver.manage().window().maximize();
         return driver;
 
     }
@@ -53,6 +53,17 @@ public class BaseTest {
         driver.manage().window().maximize();
         driver.get(url);
         return driver;
+    }
+    protected void closeBrowser(){
+        if (!(null == driver)){
+            driver.quit();
+        }
+    }
+
+    protected void closeBrowser(WebDriver driver){
+        if (!(null == driver)){
+            driver.quit();
+        }
     }
     protected int getRandomNumber(){
         return new Random().nextInt(999);

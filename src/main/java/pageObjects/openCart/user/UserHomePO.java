@@ -13,10 +13,10 @@ public class UserHomePO extends BasePage {
     }
 
 
-    public UserLoginPO clickToMyAccount() {
+    public void clickToMyAccountAtFooter() {
         scrollToElementOnTop(driver, UserHomePageUI.FOOTER_MY_ACCOUNT_LINK);
         waitElementClickable(driver, UserHomePageUI.FOOTER_MY_ACCOUNT_LINK);
         clickToElement(driver, UserHomePageUI.FOOTER_MY_ACCOUNT_LINK);
-        return PageGenerator.getPage(UserLoginPO.class, driver);
+
     }
 }

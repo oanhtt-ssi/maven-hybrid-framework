@@ -11,7 +11,10 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
+import pageObjects.PageGenerator;
 import pageObjects.orangehrm.*;
+import pageObjects.orangehrm.editNavigation.ContactDetailPO;
+import pageObjects.orangehrm.editNavigation.PersonalDetailPO;
 
 import java.time.Duration;
 
@@ -34,7 +37,7 @@ public class Level_06_Page_Manager_IV extends BaseTest {
         driver = getBrowserDriver(browserName, url);
 
 
-        loginPage = PageGeneratorGeneric.getPage(LoginPO.class, driver);
+        loginPage = PageGenerator.getPage(LoginPO.class, driver);
 
         firstName = "Mariah";
         lastName = "Carey";
@@ -90,7 +93,8 @@ public class Level_06_Page_Manager_IV extends BaseTest {
     }
 
     public void Employee_02_Contact_Detail(){
-        contactDetailPO = personalDetailPage.openContactDetailPage(driver);
+
+        //contactDetailPO = personalDetailPage.openContactDetailPage(driver);
     }
 
     private Boolean isMessageSuccessDisplayed() {

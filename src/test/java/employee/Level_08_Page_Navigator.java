@@ -20,7 +20,7 @@ import pageObjects.orangehrm.editNavigation.PersonalDetailPO;
 
 import java.time.Duration;
 
-public class Level_07_Switch_Page extends BaseTest {
+public class Level_08_Page_Navigator extends BaseTest {
     private WebDriver driver;
     private BasePage basePage = BasePage.getBasePage();
     private LoginPO loginPage;
@@ -97,25 +97,25 @@ public class Level_07_Switch_Page extends BaseTest {
 
 
     }@Test
-    public void Employee_02_Switch_Page() {
-//        //Tu personal qua Contact
-//        contactDetailPage = personalDetailPage.openContactDetailPage(driver);
-//
-//        //Tu contact qua job
-//        jobPage = contactDetailPage.openJobPage(driver);
-//
-//        // Tu Job qua Dependent
-//        dependentPage = jobPage.openDependentPage(driver);
-//
-//        // Tu Dependent qua Personal
-//        personalDetailPage = dependentPage.openPersonalDetailPage(driver);
-//
-//        // Tu Personal qua
-//        jobPage = personalDetailPage.openJobPage(driver);
-//
-//        contactDetailPage = jobPage.openContactDetailPage(driver);
-//
-//        dependentPage = contactDetailPage.openDependentPage(driver);
+    public void Employee_02_Page_Navigator() {
+        //Tu personal qua Contact
+        contactDetailPage = personalDetailPage.openContactDetailPage(driver);
+
+        //Tu contact qua job
+        jobPage = contactDetailPage.openJobPage(driver);
+
+        // Tu Job qua Dependent
+        dependentPage = jobPage.openDependentPage(driver);
+
+        // Tu Dependent qua Personal
+        personalDetailPage = dependentPage.openPersonalDetailPage(driver);
+
+        // Tu Personal qua
+        jobPage = personalDetailPage.openJobPage(driver);
+
+        contactDetailPage = jobPage.openContactDetailPage(driver);
+
+        dependentPage = contactDetailPage.openDependentPage(driver);
 
     }
 

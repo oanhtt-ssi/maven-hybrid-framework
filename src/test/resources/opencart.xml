@@ -1,0 +1,14 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+
+<suite name="Opencart">
+
+    <parameter name="userUrl" value="http://localhost:8080/opencart/"/>
+    <parameter name="adminUrl" value="http://localhost:8080/opencart/adm"/>
+    <test name="Run on Firefox" preserve-order="true">
+        <parameter name="Browser" value="Firefox"/>
+        <classes>
+            <class name="opencart.Level_09_Switch_Url"></class>
+        </classes>
+    </test>
+
+</suite>

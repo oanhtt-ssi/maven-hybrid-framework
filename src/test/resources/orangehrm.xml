@@ -6,7 +6,7 @@
     <test name="Run on FIREFOX" preserve-order="true">
         <parameter name="Browser" value="Firefox"/>
         <classes>
-            <class name="employee.Level_07_Switch_Page"></class>
+            <class name="employee.Level_08_Page_Navigator"></class>
         </classes>
     </test>
 

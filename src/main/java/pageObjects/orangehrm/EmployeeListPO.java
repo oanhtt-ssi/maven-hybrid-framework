@@ -2,6 +2,7 @@ package pageObjects.orangehrm;
 
 import core.BasePage;
 import org.openqa.selenium.WebDriver;
+import pageObjects.PageGenerator;
 import pageUIs.orangehrm.EmployeeListUI;
 
 public class EmployeeListPO extends BasePage {
@@ -18,7 +19,7 @@ public class EmployeeListPO extends BasePage {
     public AddEmployeePO clickToAddEmployeeButton() {
         waitElementVisible(driver, EmployeeListUI.ADD_EMPLOYEE_BUTTON);
         clickToElement(driver, EmployeeListUI.ADD_EMPLOYEE_BUTTON);
-        return PageGeneratorGeneric.getPage(AddEmployeePO.class,driver);
+        return PageGenerator.getPage(AddEmployeePO.class,driver);
 
     }
 }

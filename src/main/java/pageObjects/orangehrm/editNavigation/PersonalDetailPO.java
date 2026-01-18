@@ -1,13 +1,12 @@
-package pageObjects.orangehrm;
+package pageObjects.orangehrm.editNavigation;
 
-import core.BasePage;
 import org.openqa.selenium.WebDriver;
-import pageUIs.orangehrm.BasePageUI;
-import pageUIs.orangehrm.PersonalDetailUI;
+import pageUIs.orangehrm.editNavigation.PersonalDetailUI;
 
-public class PersonalDetailPO extends BasePage {
+public class PersonalDetailPO extends EditNavigatorPO {
     private WebDriver driver;
     public PersonalDetailPO(WebDriver driver) {
+        super(driver);
         this.driver = driver;
     }
 
@@ -28,9 +27,4 @@ public class PersonalDetailPO extends BasePage {
 
 
 
-    public JobPO openJobPage(){
-        waitElementClickable(driver, BasePageUI.JOB_LINK);
-        clickToElement(driver, BasePageUI.JOB_LINK);
-        return  PageGeneratorGeneric.getPage(JobPO.class, driver);
-    }
 }

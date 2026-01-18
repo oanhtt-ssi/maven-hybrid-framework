@@ -1,14 +1,13 @@
-package pageObjects.orangehrm;
+package pageObjects;
 
 import core.BasePage;
 import org.openqa.selenium.WebDriver;
+import pageObjects.openCart.user.UserHomePO;
+import pageObjects.orangehrm.LoginPO;
 
 import java.lang.reflect.Constructor;
 
-public class PageGeneratorGeneric {
-    public  static LoginPO getLoginPage(WebDriver driver){
-        return new LoginPO(driver);
-    }
+public class PageGenerator {
     public static <T extends BasePage> T getPage(Class<T> pageClass, WebDriver driver){
         try {
             Constructor<T> constructor = pageClass.getConstructor(WebDriver.class);

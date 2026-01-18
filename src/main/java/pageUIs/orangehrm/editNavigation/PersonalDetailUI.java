@@ -1,4 +1,4 @@
-package pageUIs.orangehrm;
+package pageUIs.orangehrm.editNavigation;
 
 public class PersonalDetailUI {
     public static final String FIRSTNAME_TEXTBOX = "//input[@name='firstName']";

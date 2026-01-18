@@ -2,8 +2,9 @@ package pageObjects.orangehrm;
 
 import core.BasePage;
 import org.openqa.selenium.WebDriver;
+import pageObjects.PageGenerator;
+import pageObjects.orangehrm.editNavigation.PersonalDetailPO;
 import pageUIs.orangehrm.AddEmployeeUI;
-import pageUIs.orangehrm.BasePageUI;
 
 public class AddEmployeePO extends BasePage {
     private WebDriver driver;
@@ -50,7 +51,7 @@ public class AddEmployeePO extends BasePage {
         waitElementClickable(driver, AddEmployeeUI.SAVE_BUTTON);
         clickToElement(driver, AddEmployeeUI.SAVE_BUTTON);
         waitListElementInvisible(driver, AddEmployeeUI.SPINNER_ICON);
-        return PageGeneratorGeneric.getPage(PersonalDetailPO.class,driver);
+        return PageGenerator.getPage(PersonalDetailPO.class,driver);
     }
 
     public boolean isSuccessfullySavedMessageDisplayed() {

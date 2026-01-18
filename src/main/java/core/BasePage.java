@@ -1,14 +1,15 @@
 package core;
 
 import org.openqa.selenium.*;
-import org.openqa.selenium.interactions.Action;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.Color;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import pageObjects.orangehrm.*;
-import pageUIs.orangehrm.*;
+import pageObjects.PageGenerator;
+import pageObjects.openCart.admin.AdminLoginPO;
+import pageObjects.openCart.user.UserHomePO;
+import pageUIs.BasePageUI;
 
 import java.time.Duration;
 import java.util.List;
@@ -347,63 +348,34 @@ public class BasePage {
         return waitListElementInvisible(driver, BasePageUI.SPINNER_ICON);
     }
 
-    public DashboardPO clickToLoginButton(WebDriver driver) {
-        waitElementClickable(driver, LoginUI.LOGIN_BUTTON);
-        clickToElement(driver,LoginUI.LOGIN_BUTTON);
-        return PageGeneratorGeneric.getPage(DashboardPO.class, driver);
+//OpenCart
+    public UserHomePO clickToLogoutLinkAtUserSite(WebDriver driver){
+        waitElementClickable(driver, BasePageUI.USER_MY_ACCOUNT_HEADER);
+        clickToElement(driver, BasePageUI.USER_MY_ACCOUNT_HEADER);
 
+        waitElementClickable(driver, BasePageUI.USER_LOGOUT_LINK_ITEM);
+        clickToElement(driver, BasePageUI.USER_LOGOUT_LINK_ITEM);
+        return PageGenerator.getPage(UserHomePO.class, driver);
+}
+
+
+    public AdminLoginPO clickToLogoutLinkAtAdminSite(WebDriver driver) {
+        waitElementClickable(driver, BasePageUI.ADMIN_LOGOUT_LINK_ITEM);
+        clickToElement(driver, BasePageUI.ADMIN_LOGOUT_LINK_ITEM);
+        return PageGenerator.getPage(AdminLoginPO.class, driver);
     }
 
-    public PersonalDetailPO clickToSaveButton(WebDriver driver) {
-        waitElementClickable(driver, AddEmployeeUI.SAVE_BUTTON);
-        clickToElement(driver, AddEmployeeUI.SAVE_BUTTON);
-        waitListElementInvisible(driver, AddEmployeeUI.SPINNER_ICON);
-        return PageGeneratorGeneric.getPage(PersonalDetailPO.class,driver);
+    public AdminLoginPO openAdminSite(WebDriver driver, String adminUrl) {
+        openPageUrl(driver, adminUrl);
+        return PageGenerator.getPage(AdminLoginPO.class, driver);
     }
 
-    public JobPO openJobPage(WebDriver driver){
-        waitElementClickable(driver, BasePageUI.JOB_LINK);
-        clickToElement(driver, BasePageUI.JOB_LINK);
-        return  PageGeneratorGeneric.getPage(JobPO.class,driver);
+    public UserHomePO openUserSite(WebDriver driver, String userUrl) {
+        openPageUrl(driver, userUrl);
+        return PageGenerator.getPage(UserHomePO.class, driver);
     }
-
-    public EmployeeListPO clickToPIMModule(WebDriver driver) {
-        waitElementClickable(driver, DashboardUI.PIM_MODULE);
-        clickToElement(driver,DashboardUI.PIM_MODULE);
-        return PageGeneratorGeneric.getPage(EmployeeListPO.class,driver);
-
-    }
-
-    public PersonalDetailPO openPersonalDetailPage(WebDriver driver){
-        waitElementClickable(driver, BasePageUI.PERSONAL_DETAIL_LINK);
-        clickToElement(driver, BasePageUI.PERSONAL_DETAIL_LINK);
-        return PageGeneratorGeneric.getPage(PersonalDetailPO.class, driver);
-    }
-
-    public AddEmployeePO clickToAddEmployeeButton(WebDriver driver) {
-        waitElementVisible(driver, EmployeeListUI.ADD_EMPLOYEE_BUTTON);
-        clickToElement(driver, EmployeeListUI.ADD_EMPLOYEE_BUTTON);
-        return PageGeneratorGeneric.getPage(AddEmployeePO.class,driver);
-
-    }
-
-    public DependentsPO openDependentPage(WebDriver driver){
-        waitElementClickable(driver, BasePageUI.DEPENDENT_LINK);
-        clickToElement(driver, BasePageUI.DEPENDENT_LINK);
-        return PageGeneratorGeneric.getPage(DependentsPO.class, driver);
-
-    }
-
-    public ContactDetailPO openContactDetailPage(WebDriver driver) {
-        waitElementClickable(driver, BasePageUI.CONTACT_DETAIL_LINK);
-        clickToElement(driver, BasePageUI.CONTACT_DETAIL_LINK);
-        return PageGeneratorGeneric.getPage(ContactDetailPO.class,driver);
-    }
-
-
 
     private final int SHORT_TIMEOUT = 10;
     private final int LONG_TIMEOUT = 30;
-
 }
 

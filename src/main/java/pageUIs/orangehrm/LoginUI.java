@@ -1,7 +1,7 @@
 package pageUIs.orangehrm;
 
 public class LoginUI {
-    public static final String USERNAME_TEXTBOX = "//input[@name='username']";
-    public static final String PASSWORD_TEXTBOX = "//input[@name='password']";
-    public static final String LOGIN_BUTTON = "//button[@type='submit']";
+    public static final String USERNAME_TEXTBOX = "name=username";
+    public static final String PASSWORD_TEXTBOX = "name=password";
+    public static final String LOGIN_BUTTON = "Css=button.orangehrm-login-button";
 }

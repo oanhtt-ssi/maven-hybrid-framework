@@ -3,10 +3,10 @@
 <suite name="Orange HRM">
 
     <parameter name="Url" value="http://localhost:8080/orangehrm"/>
-    <test name="Run on FIREFOX" preserve-order="true">
-        <parameter name="Browser" value="Firefox"/>
+    <test name="Run on CHROME" preserve-order="true">
+        <parameter name="Browser" value="Chrome"/>
         <classes>
-            <class name="employee.Level_08_Page_Navigator"></class>
+            <class name="employee.Level_11_By_Locator"></class>
         </classes>
     </test>
 

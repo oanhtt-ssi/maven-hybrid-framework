@@ -100,25 +100,54 @@ public class Level_11_By_Locator extends BaseTest {
 
 
     }@Test
-    public void Employee_02_Page_Navigator() {
+    public void Employee_02_Dynamic_Page() {
         //Tu personal qua Contact
-        contactDetailPage = personalDetailPage.openContactDetailPage(driver);
+        contactDetailPage = (ContactDetailPO) personalDetailPage.openEditNavigatorPageByName("Contact Details");
 
         //Tu contact qua job
-        jobPage = contactDetailPage.openJobPage(driver);
+        jobPage = (JobPO) contactDetailPage.openEditNavigatorPageByName("Job");
 
         // Tu Job qua Dependent
-        dependentPage = jobPage.openDependentPage(driver);
+        dependentPage = (DependentsPO) jobPage.openEditNavigatorPageByName("Dependents");
 
         // Tu Dependent qua Personal
-        personalDetailPage = dependentPage.openPersonalDetailPage(driver);
+        personalDetailPage = (PersonalDetailPO) dependentPage.openEditNavigatorPageByName("Personal Details");
 
         // Tu Personal qua
-        jobPage = personalDetailPage.openJobPage(driver);
+        jobPage = (JobPO) personalDetailPage.openEditNavigatorPageByName("Job");
 
-        contactDetailPage = jobPage.openContactDetailPage(driver);
+        contactDetailPage = (ContactDetailPO) jobPage.openEditNavigatorPageByName("Contact Details");
 
-        dependentPage = contactDetailPage.openDependentPage(driver);
+        dependentPage = (DependentsPO) contactDetailPage.openEditNavigatorPageByName("Dependents");
+
+    }
+    @Test
+    public void Employee_03_Dynamic_Page(){
+        //Tu personal qua Contact
+        personalDetailPage.openEditNavigatorByName("Contact Details");
+        contactDetailPage = PageGenerator.getPage(ContactDetailPO.class, driver);
+
+        //Tu contact qua job
+        contactDetailPage.openEditNavigatorByName("Job");
+        jobPage = PageGenerator.getPage(JobPO.class, driver);
+
+                // Tu Job qua Dependent
+        jobPage.openEditNavigatorByName("Dependents");
+        dependentPage = PageGenerator.getPage(DependentsPO.class, driver);
+
+                // Tu Dependent qua Personal
+        dependentPage.openEditNavigatorByName("Personal Details");
+        personalDetailPage = PageGenerator.getPage(PersonalDetailPO.class, driver);
+
+                // Tu Personal qua
+        personalDetailPage.openEditNavigatorByName("Job");
+        jobPage = PageGenerator.getPage(JobPO.class, driver);
+
+        jobPage.openEditNavigatorByName("Contact Details");
+        contactDetailPage = PageGenerator.getPage(ContactDetailPO.class, driver);
+
+        contactDetailPage.openEditNavigatorByName("Dependents");
+        dependentPage = PageGenerator.getPage(DependentsPO.class, driver);
 
     }
 

@@ -152,12 +152,16 @@ public class BasePage {
         }
     }
 
-    private WebElement getWebElement(WebDriver driver, String locatorType){
+    public WebElement getWebElement(WebDriver driver, String locatorType){
         return driver.findElement(getByLocator(locatorType));
     }
 
-    private List<WebElement> getListElement(WebDriver driver, String locatorType){
+    public List<WebElement> getListElement(WebDriver driver, String locatorType){
         return driver.findElements(getByLocator(locatorType));
+    }
+
+    public List<WebElement> getListElement(WebDriver driver, String locatorType, String... restValue){
+        return driver.findElements(getByLocator(castParameter(locatorType, restValue)));
     }
 
     public void clickToElement(WebDriver driver, String locatorType){
@@ -168,11 +172,13 @@ public class BasePage {
         getWebElement(driver, castParameter(locatorType, restValue)).click();
     }
 
-    public void senKeyToElement(WebDriver driver, String locatorType, String keyToSend){
+    public void senKeyToElement(WebDriver driver, String locatorType, CharSequence keyToSend){
+        getWebElement(driver, locatorType).clear();
         getWebElement(driver,locatorType).sendKeys(keyToSend);
     }
 
-    public void senKeyToElement(WebDriver driver, String locatorType, String keyToSend, String... restValue){
+    public void senKeyToElement(WebDriver driver, String locatorType, CharSequence keyToSend, String... restValue){
+        getWebElement(driver,castParameter(locatorType, restValue)).clear();
         getWebElement(driver,castParameter(locatorType, restValue)).sendKeys(keyToSend);
     }
 
@@ -261,6 +267,10 @@ public class BasePage {
         return getListElement(driver, locator).size();
     }
 
+    public int getListElementNumber(WebDriver driver, String locator, String... restValue){
+        return getListElement(driver, castParameter(locator, restValue)).size();
+    }
+
     public void checkToCheckbox(WebDriver driver, String locator){
         if (!isElementSelected(driver, locator)){
             getWebElement(driver, locator).click();
@@ -268,7 +278,7 @@ public class BasePage {
     }
 
     public void checkToCheckbox(WebDriver driver, String locator, String... restValue){
-        if (!isElementSelected(driver, locator)){
+        if (!isElementSelected(driver, castParameter(locator, restValue))){
             getWebElement(driver, castParameter(locator, restValue)).click();
         }
     }

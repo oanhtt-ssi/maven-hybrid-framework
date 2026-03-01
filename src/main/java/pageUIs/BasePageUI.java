@@ -9,6 +9,9 @@ public class BasePageUI {
     public static final String ADMIN_LOGOUT_LINK_ITEM = "xpath=//li[@id='nav-logout']//span[text()='Logout']";
     public static final String USER_HOME_LOGO = "Css=div#logo>a";
 
+    // JQuery
+    public static final String UPLOAD_FILE_TYPE = "CSS=input[type='file']";
+
 
 
 }

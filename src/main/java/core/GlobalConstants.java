@@ -2,6 +2,8 @@ package core;
 
 import pageObjects.PageGenerator;
 
+import java.io.File;
+
 public class GlobalConstants {
 
     public static final String PROJECT_PATH = System.getProperty("user.dir");
@@ -13,18 +15,18 @@ public class GlobalConstants {
     public static final int SHORT_TIMEOUT = 5;
     public static final int LONG_TIMEOUT = 15;
 
-    public static final String UPLOAD_PATH = PROJECT_PATH + "/uploadFiles";
-    public static final String DOWNLOAD_PATH = PROJECT_PATH + "/downloadFiles";
+    public static final String UPLOAD_PATH = PROJECT_PATH + File.separator + "uploadFiles" + File.separator;
+    public static final String DOWNLOAD_PATH = PROJECT_PATH + File.separator + "downloadFiles" + File.separator;
 
     public static final int RETRY_NUMBER = 3;
 
-    public static final String BROWSER_LOG_PATH = PROJECT_PATH + "/browserLogs";
-    public static final String BROWSER_EXTENSION_PATH = PROJECT_PATH + "/browserExtensions";
+    public static final String BROWSER_LOG_PATH = PROJECT_PATH + File.separator + "browserLogs" + File.separator;
+    public static final String BROWSER_EXTENSION_PATH = PROJECT_PATH + File.separator + "browserExtensions" + File.separator;
 
-    public static final String REPORTNG_PATH = PROJECT_PATH + "/htmlReportNG";
-    public static final String EXTENT_PATH = PROJECT_PATH + "/htmlExtent";
-    public static final String ALLURE_PATH = PROJECT_PATH + "/htmlAllure";
+    public static final String REPORTNG_PATH = PROJECT_PATH + File.separator + "htmlReportNG" + File.separator;
+    public static final String EXTENT_PATH = PROJECT_PATH + File.separator + "htmlExtent" + File.separator;
+    public static final String ALLURE_PATH = PROJECT_PATH + File.separator + "htmlAllure" + File.separator;
 
-    public static final String DATA_TEST_PATH = PROJECT_PATH + "/dataTest";
-    public static final String ENVIRONMENT_CONFIG_PATH = PROJECT_PATH + "/environmentConfig";
+    public static final String DATA_TEST_PATH = PROJECT_PATH + File.separator + "dataTest" + File.separator;
+    public static final String ENVIRONMENT_CONFIG_PATH = PROJECT_PATH + File.separator + "environmentConfig" + File.separator;
 }

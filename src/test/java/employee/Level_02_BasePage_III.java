@@ -43,15 +43,15 @@ public class Level_02_BasePage_III extends BasePage{
         clickToElement(driver,"//button[@type='submit']");
 
 
-        Assert.assertTrue(isLoadingIconDisappear(driver));
+        Assert.assertTrue(isLoadingSpinnerDisappear(driver));
         Assert.assertTrue(isElementDisplayed(driver,"//h6[text()='Dashboard']"));
 
         clickToElement(driver,"//span[text()='PIM']/parent::a");
-        Assert.assertTrue(isLoadingIconDisappear(driver));
+        Assert.assertTrue(isLoadingSpinnerDisappear(driver));
         Assert.assertTrue(isElementDisplayed(driver,"//h6[text()='PIM']"));
 
         clickToElement(driver,"//a[text()='Add Employee']");
-        Assert.assertTrue(isLoadingIconDisappear(driver));
+        Assert.assertTrue(isLoadingSpinnerDisappear(driver));
 
         senKeyToElement(driver,"//input[@name='firstName']",firstName);
         senKeyToElement(driver,"//input[@name='lastName']",lastName);
@@ -70,8 +70,8 @@ public class Level_02_BasePage_III extends BasePage{
 
         //Assert.assertTrue(isMessageSuccessDisplayed());
         isElementDisplayed(driver,"//p[text()='Successfully Saved']");
-        Assert.assertTrue(isLoadingIconDisappear(driver));
-        Assert.assertTrue(isLoadingIconDisappear(driver));
+        Assert.assertTrue(isLoadingSpinnerDisappear(driver));
+        Assert.assertTrue(isLoadingSpinnerDisappear(driver));
 
         Assert.assertEquals(getElementDOMProperty(driver,"//input[@name='firstName']","value"),firstName);
         Assert.assertEquals(getElementDOMProperty(driver,"//input[@name='lastName']","value"),lastName);
@@ -79,7 +79,7 @@ public class Level_02_BasePage_III extends BasePage{
 
         clickToElement(driver,"//a[text()='Immigration']");
         isElementDisplayed(driver,"//h6[text()='Assigned Immigration Records']");
-        Assert.assertTrue(isLoadingIconDisappear(driver));
+        Assert.assertTrue(isLoadingSpinnerDisappear(driver));
 
         clickToElement(driver,"//h6[text()='Assigned Immigration Records']/following-sibling::button");
         isElementDisplayed(driver,"//h6[text()='Add Immigration']");
@@ -89,12 +89,12 @@ public class Level_02_BasePage_III extends BasePage{
         clickToElement(driver,"button[type='submit']");
 
         isElementDisplayed(driver,"//p[text()='Successfully Saved']");
-        Assert.assertTrue(isLoadingIconDisappear(driver));
+        Assert.assertTrue(isLoadingSpinnerDisappear(driver));
         isElementDisplayed(driver,"//h6[text()='Assigned Immigration Records']");
         clickToElement(driver,"//i[@class='oxd-icon bi-pencil-fill']/parent::button");
 
 
-        Assert.assertTrue(isLoadingIconDisappear(driver));
+        Assert.assertTrue(isLoadingSpinnerDisappear(driver));
         isElementDisplayed(driver,"//h6[text()='Edit Immigration']");
 
 

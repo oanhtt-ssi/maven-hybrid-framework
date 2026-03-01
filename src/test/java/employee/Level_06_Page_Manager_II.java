@@ -60,16 +60,16 @@ public class Level_06_Page_Manager_II extends BaseTest {
         loginPage.enterToPasswordTextbox(adminPassword);
         dashboardPage = loginPage.clickToLoginButton();
 
-        Assert.assertTrue(dashboardPage.isLoadingIconDisappear(driver));
+        Assert.assertTrue(dashboardPage.isLoadingSpinnerDisappear(driver));
         Assert.assertTrue(dashboardPage.isDashboardHeaderDisplayed());
         dashboardPage.sleepInSecond(2);
 
         employeeListPOPage = dashboardPage.clickToPIMModule();
-        Assert.assertTrue(employeeListPOPage.isLoadingIconDisappear(driver));
+        Assert.assertTrue(employeeListPOPage.isLoadingSpinnerDisappear(driver));
         Assert.assertTrue(employeeListPOPage.isPIMHeaderDisplayed());
 
         addEmployeePage = employeeListPOPage.clickToAddEmployeeButton();
-        Assert.assertTrue(addEmployeePage.isLoadingIconDisappear(driver));
+        Assert.assertTrue(addEmployeePage.isLoadingSpinnerDisappear(driver));
 
         addEmployeePage.enterToFirstNameTextbox(firstName);
         addEmployeePage.enterToLastNameTextbox(lastName);
@@ -83,7 +83,7 @@ public class Level_06_Page_Manager_II extends BaseTest {
 
         personalDetailPage = addEmployeePage.clickToSaveButton();
 
-        Assert.assertTrue(personalDetailPage.isLoadingIconDisappear(driver));
+        Assert.assertTrue(personalDetailPage.isLoadingSpinnerDisappear(driver));
         personalDetailPage.sleepInSecond(2);
 
         Assert.assertEquals(personalDetailPage.getFirstnameTextboxValue(), firstName);

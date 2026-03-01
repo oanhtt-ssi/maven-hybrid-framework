@@ -63,7 +63,7 @@ public class Level_07_Switch_Page extends BaseTest {
         loginPage.enterToPasswordTextbox(adminPassword);
         dashboardPage = loginPage.clickToLoginButton();
 
-        Assert.assertTrue(dashboardPage.isLoadingIconDisappear(driver));
+        Assert.assertTrue(dashboardPage.isLoadingSpinnerDisappear(driver));
         Assert.assertTrue(dashboardPage.isDashboardHeaderDisplayed());
         dashboardPage.sleepInSecond(2);
 

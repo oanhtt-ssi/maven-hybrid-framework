@@ -2,11 +2,11 @@
 
 <suite name="Data Table">
 
-    <parameter name="url" value="https://blueimp.github.io/jQuery-File-Upload/"/>
+    <parameter name="url" value="https://gofile.io/home"/>
     <test name="Run on CHROME" preserve-order="true">
         <parameter name="browser" value="Chrome"/>
         <classes>
-            <class name="jquery.Level_13_Upload_File"></class>
+            <class name="gofile.Level_13_Upload_File"></class>
         </classes>
     </test>
 

@@ -156,6 +156,10 @@ public class BasePage {
         return driver.findElement(getByLocator(locatorType));
     }
 
+    public WebElement getWebElement(WebDriver driver, String locatorType, String... restValue){
+        return driver.findElement(getByLocator(castParameter(locatorType, restValue)));
+    }
+
     public List<WebElement> getListElement(WebDriver driver, String locatorType){
         return driver.findElements(getByLocator(locatorType));
     }
@@ -434,13 +438,19 @@ public class BasePage {
                 .until(ExpectedConditions.elementToBeSelected(getByLocator(castParameter(locator, restValue))));
     }
 
-    public void waitElementClickable(WebDriver driver, String locator){
-        new WebDriverWait(driver, Duration.ofSeconds(LONG_TIMEOUT))
+    public WebElement waitElementClickable(WebDriver driver, String locator){
+        return new WebDriverWait(driver, Duration.ofSeconds(LONG_TIMEOUT))
                 .until(ExpectedConditions.elementToBeClickable(getByLocator(locator)));
     }
 
-    public void waitElementClickable(WebDriver driver, String locator, String... restValue){
-        new WebDriverWait(driver, Duration.ofSeconds(LONG_TIMEOUT))
+
+    public WebElement waitElementClickable(WebDriver driver, WebElement element){
+        return new WebDriverWait(driver, Duration.ofSeconds(LONG_TIMEOUT))
+                .until(ExpectedConditions.elementToBeClickable(element));
+    }
+
+    public WebElement waitElementClickable(WebDriver driver, String locator, String... restValue){
+        return new WebDriverWait(driver, Duration.ofSeconds(LONG_TIMEOUT))
                 .until(ExpectedConditions.elementToBeClickable(getByLocator(castParameter(locator, restValue))));
     }
 
@@ -484,9 +494,18 @@ public class BasePage {
                 .until(ExpectedConditions.presenceOfAllElementsLocatedBy(getByLocator(castParameter(locatorType, restValue))));
     }
 
-    public Boolean isLoadingIconDisappear(WebDriver driver) {
-        return waitListElementInvisible(driver, "//div[contains(@class,'oxd-loading-spinner')]");
+    public void uploadMultipleFiles(WebDriver driver, String... fileNames){
+        String filePath = GlobalConstants.UPLOAD_PATH;
+        String fullFileName = "";
+        for (String file : fileNames){
+            fullFileName = fullFileName + filePath + file + "\n";
+        }
+        getWebElement(driver, BasePageUI.UPLOAD_FILE_TYPE).sendKeys(fullFileName.trim());
     }
+//
+//    public Boolean isLoadingIconDisappear(WebDriver driver) {
+//        return waitListElementInvisible(driver, "//div[contains(@class,'oxd-loading-spinner')]");
+//    }
 
 
     public Boolean isLoadingSpinnerDisappear(WebDriver driver) {

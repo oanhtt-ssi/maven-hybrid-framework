@@ -54,19 +54,19 @@ public class Level_04_PageObjectPattern extends BaseTest {
         loginPage.clickToLoginButton();
 
         dashboardPage = new DashboardPO(driver);
-        Assert.assertTrue(dashboardPage.isLoadingIconDisappear(driver));
+        Assert.assertTrue(dashboardPage.isLoadingSpinnerDisappear(driver));
         Assert.assertTrue(dashboardPage.isDashboardHeaderDisplayed());
 
         dashboardPage.clickToPIMModule();
 
         employeeListPOPage = new EmployeeListPO(driver);
-        Assert.assertTrue(employeeListPOPage.isLoadingIconDisappear(driver));
+        Assert.assertTrue(employeeListPOPage.isLoadingSpinnerDisappear(driver));
         Assert.assertTrue(employeeListPOPage.isPIMHeaderDisplayed());
 
         employeeListPOPage.clickToAddEmployeeButton();
 
         addEmployeePage = new AddEmployeePO(driver);
-        Assert.assertTrue(addEmployeePage.isLoadingIconDisappear(driver));
+        Assert.assertTrue(addEmployeePage.isLoadingSpinnerDisappear(driver));
         addEmployeePage.enterToFirstNameTextbox(firstName);
         addEmployeePage.enterToLastNameTextbox(lastName);
 
@@ -85,8 +85,8 @@ public class Level_04_PageObjectPattern extends BaseTest {
 
         personalDetailPage = new PersonalDetailPO(driver);
 
-        Assert.assertTrue(personalDetailPage.isLoadingIconDisappear(driver));
-        Assert.assertTrue(personalDetailPage.isLoadingIconDisappear(driver));
+        Assert.assertTrue(personalDetailPage.isLoadingSpinnerDisappear(driver));
+        Assert.assertTrue(personalDetailPage.isLoadingSpinnerDisappear(driver));
 
         Assert.assertEquals(personalDetailPage.getFirstnameTextboxValue(), firstName);
         Assert.assertEquals(personalDetailPage.getLastnameTextboxValue(), lastName);

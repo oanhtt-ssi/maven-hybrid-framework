@@ -1,12 +1,15 @@
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
 
 <suite name="Orange HRM">
+    <listeners>
+       <!-- <listener class-name="core.MethodListener"></listener> -->
+    </listeners>
 
     <parameter name="Url" value="http://localhost:8080/orangehrm"/>
     <test name="Run on CHROME" preserve-order="true">
         <parameter name="Browser" value="Chrome"/>
         <classes>
-            <class name="employee.Level_11_By_Locator"></class>
+            <class name="employee.Level_12_Assert_Verify"></class>
         </classes>
     </test>
 

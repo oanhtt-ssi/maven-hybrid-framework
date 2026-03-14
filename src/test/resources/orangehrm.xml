@@ -2,7 +2,7 @@
 
 <suite name="Orange HRM">
     <listeners>
-       <!-- <listener class-name="core.MethodListener"></listener> -->
+       <listener class-name="core.MethodListener"></listener>
     </listeners>
 
     <parameter name="Url" value="http://localhost:8080/orangehrm"/>

@@ -1,12 +1,13 @@
 package employee;
 
+import com.relevantcodes.extentreports.LogStatus;
 import core.BasePage;
 import core.BaseTest;
-//import org.apache.commons.logging.Log;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Parameters;
@@ -20,10 +21,14 @@ import pageObjects.orangehrm.editNavigation.ContactDetailPO;
 import pageObjects.orangehrm.editNavigation.DependentsPO;
 import pageObjects.orangehrm.editNavigation.JobPO;
 import pageObjects.orangehrm.editNavigation.PersonalDetailPO;
+import reportConfigs.ExtentManager;
 
+import java.lang.reflect.Method;
 import java.time.Duration;
 
-public class Level_13_Logging extends BaseTest {
+
+
+public class Level_14_Extent extends BaseTest {
     private WebDriver driver;
     private BasePage basePage = BasePage.getBasePage();
     private LoginPO loginPage;
@@ -61,42 +66,54 @@ public class Level_13_Logging extends BaseTest {
     }
 
     @Test
-    public void Employee_01_NewEmployee(){
-        //log.info("NewEmployee - STEP 01: Enter to Username and Password with info: " + adminUsername + " | " +  adminPassword);
+    public void Employee_01_NewEmployee(Method method){
+        ExtentManager.startTest(method.getName(), "Employee_01_NewEmployee");
+
+        ExtentManager.getTest().log(LogStatus.INFO,"NewEmployee - STEP 01: Enter to Username and Password with info: " + adminUsername + " | " +  adminPassword);
         loginPage.enterToUsernameTextbox(adminUsername);
         loginPage.enterToPasswordTextbox(adminPassword);
 
-        //log.info("NewEmployee - STEP 02: Navigate to Dashboard page ");
+
+        ExtentManager.getTest().log(LogStatus.INFO,"NewEmployee - STEP 02: Navigate to Dashboard page ");
         dashboardPage = loginPage.clickToLoginButton();
-        verifyTrue(dashboardPage.isLoadingSpinnerDisappear(driver));
+        Assert.assertTrue(dashboardPage.isLoadingSpinnerDisappear(driver));
         dashboardPage.sleepInSecond(2);
-        verifyTrue(dashboardPage.isDashboardHeaderDisplayed());
+        Assert.assertTrue(dashboardPage.isDashboardHeaderDisplayed());
         dashboardPage.sleepInSecond(2);
 
-       // log.info("NewEmployee - STEP 03: Navigate to Employee Search page ");
+
+        ExtentManager.getTest().log(LogStatus.INFO,"NewEmployee - STEP 03: Navigate to Employee Search page ");
         employeeListPOPage = dashboardPage.clickToPIMModule();
-        verifyFalse(employeeListPOPage.isLoadingSpinnerDisappear(driver));
-        verifyTrue(employeeListPOPage.isPIMHeaderDisplayed());
+        Assert.assertTrue(employeeListPOPage.isLoadingSpinnerDisappear(driver));
+        Assert.assertTrue(employeeListPOPage.isPIMHeaderDisplayed());
 
-        //log.info("NewEmployee - STEP 04: Navigate to Add Employee page ");
+
+        ExtentManager.getTest().log(LogStatus.INFO,"NewEmployee - STEP 04: Navigate to Add Employee page ");
         addEmployeePage = employeeListPOPage.clickToAddEmployeeButton();
-        verifyTrue(addEmployeePage.isLoadingSpinnerDisappear(driver));
+        Assert.assertTrue(addEmployeePage.isLoadingSpinnerDisappear(driver));
 
-        //log.info("NewEmployee - STEP 05: Enter to FirstName and LastName with info: " + firstName + " | " +  lastName);
+
+        ExtentManager.getTest().log(LogStatus.INFO,"NewEmployee - STEP 05: Enter to FirstName and LastName with info: " + firstName + " | " +  lastName);
         addEmployeePage.enterToFirstNameTextbox(firstName);
         addEmployeePage.enterToLastNameTextbox(lastName);
         employeeID = addEmployeePage.getEmployeeIDValue();
         addEmployeePage.sleepInSecond(2);
 
-        //log.info("NewEmployee - STEP 06: Navigate to Personal Details page ");
+
+        ExtentManager.getTest().log(LogStatus.INFO,"NewEmployee - STEP 06: Navigate to Personal Details page ");
         personalDetailPage = addEmployeePage.clickToSaveButton();
-        verifyTrue(personalDetailPage.isLoadingSpinnerDisappear(driver));
+        Assert.assertTrue(personalDetailPage.isLoadingSpinnerDisappear(driver));
         personalDetailPage.sleepInSecond(2);
 
-        //log.info("NewEmployee - STEP 07: Verify Employee infor displayed: " + firstName + " | " +lastName + " | " + employeeID);
-        verifyEquals(personalDetailPage.getFirstnameTextboxValue(), lastName);
-        verifyEquals(personalDetailPage.getLastnameTextboxValue(), firstName);
-        verifyEquals(personalDetailPage.getEmployeeTextboxValue(), employeeID);
+
+        ExtentManager.getTest().log(LogStatus.INFO,"NewEmployee - STEP 07: Verify Employee infor displayed: " + firstName + " | " +lastName + " | " + employeeID);
+        Assert.assertEquals(personalDetailPage.getFirstnameTextboxValue(), lastName);
+        Assert.assertEquals(personalDetailPage.getLastnameTextboxValue(), firstName);
+        Assert.assertEquals(personalDetailPage.getEmployeeTextboxValue(), employeeID);
+
+
+        ExtentManager.endTest();
+
 
 
     }

@@ -20,7 +20,6 @@ import pageObjects.orangehrm.editNavigation.ContactDetailPO;
 import pageObjects.orangehrm.editNavigation.DependentsPO;
 import pageObjects.orangehrm.editNavigation.JobPO;
 import pageObjects.orangehrm.editNavigation.PersonalDetailPO;
-import reportConfigs.ExtentManager;
 
 import java.lang.reflect.Method;
 import java.time.Duration;

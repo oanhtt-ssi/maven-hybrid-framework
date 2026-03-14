@@ -7,7 +7,6 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Parameters;
@@ -21,7 +20,6 @@ import pageObjects.orangehrm.editNavigation.ContactDetailPO;
 import pageObjects.orangehrm.editNavigation.DependentsPO;
 import pageObjects.orangehrm.editNavigation.JobPO;
 import pageObjects.orangehrm.editNavigation.PersonalDetailPO;
-import reportConfigs.ExtentManager;
 
 import java.lang.reflect.Method;
 import java.time.Duration;

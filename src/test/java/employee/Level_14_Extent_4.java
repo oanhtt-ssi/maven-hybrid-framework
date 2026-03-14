@@ -63,14 +63,10 @@ public class Level_14_Extent_4 extends BaseTest {
     }
 
     @Test
-    public void Employee_01_NewEmployee(Method method){
-
-
+    public void Employee_01_NewEmployee(){
 
         loginPage.enterToUsernameTextbox(adminUsername);
         loginPage.enterToPasswordTextbox(adminPassword);
-
-
 
         dashboardPage = loginPage.clickToLoginButton();
         Assert.assertTrue(dashboardPage.isLoadingSpinnerDisappear(driver));
@@ -82,24 +78,32 @@ public class Level_14_Extent_4 extends BaseTest {
         Assert.assertTrue(employeeListPOPage.isLoadingSpinnerDisappear(driver));
         Assert.assertTrue(employeeListPOPage.isPIMHeaderDisplayed());
 
+
+    }
+
+    @Test
+    public void Employee_02_ViewEmployee(){
         addEmployeePage = employeeListPOPage.clickToAddEmployeeButton();
         Assert.assertTrue(addEmployeePage.isLoadingSpinnerDisappear(driver));
-
 
         addEmployeePage.enterToFirstNameTextbox(firstName);
         addEmployeePage.enterToLastNameTextbox(lastName);
         employeeID = addEmployeePage.getEmployeeIDValue();
         addEmployeePage.sleepInSecond(2);
+    }
 
-
+    @Test
+    public void Employee_03_EditEmployee(){
         personalDetailPage = addEmployeePage.clickToSaveButton();
         Assert.assertTrue(personalDetailPage.isLoadingSpinnerDisappear(driver));
         personalDetailPage.sleepInSecond(2);
+    }
 
-        Assert.assertEquals(personalDetailPage.getFirstnameTextboxValue(), lastName);
-        Assert.assertEquals(personalDetailPage.getLastnameTextboxValue(), firstName);
-        Assert.assertEquals(personalDetailPage.getEmployeeTextboxValue(), employeeID);
-
+    @Test
+    public void Employee_04_RemoveEmployee(){
+        Assert.assertEquals(personalDetailPage.getFirstnameTextboxValue(), firstName);
+        Assert.assertEquals(personalDetailPage.getLastnameTextboxValue(), lastName);
+        Assert.assertEquals(personalDetailPage.getEmployeeTextboxValue(), lastName);
     }
 
     private Boolean isMessageSuccessDisplayed() {

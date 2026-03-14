@@ -10,7 +10,21 @@
     <test name="Run on CHROME" preserve-order="true">
         <parameter name="Browser" value="Chrome"/>
         <classes>
-            <class name="employee.Level_14_Extent_4"></class>
+            <class name="employee.Level_14_Extent_5"></class>
+        </classes>
+    </test>
+
+    <test name="Run on FIREFOX" preserve-order="true">
+        <parameter name="Browser" value="Firefox"/>
+        <classes>
+            <class name="employee.Level_14_Extent_5"></class>
+        </classes>
+    </test>
+
+    <test name="Run on Edge" preserve-order="true">
+        <parameter name="Browser" value="Edge"/>
+        <classes>
+            <class name="employee.Level_14_Extent_5"></class>
         </classes>
     </test>
 

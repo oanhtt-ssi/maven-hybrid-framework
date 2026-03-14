@@ -66,7 +66,6 @@ public class Level_14_Extent_2 extends BaseTest {
     @Test
     public void Employee_01_NewEmployee(Method method){
 //        ExtentManager.startTest(method.getName(), "Employee_01_NewEmployee");
-//
 //        ExtentManager.getTest().log(LogStatus.INFO,"NewEmployee - STEP 01: Enter to Username and Password with info: " + adminUsername + " | " +  adminPassword);
 //        loginPage.enterToUsernameTextbox(adminUsername);
 //        loginPage.enterToPasswordTextbox(adminPassword);

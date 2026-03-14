@@ -3,7 +3,6 @@ package core;
 
 //import org.apache.logging.log4j.Logger;
 //import org.apache.logging.log4j.LogManager;
-import com.relevantcodes.extentreports.LogStatus;
 import org.junit.Assert;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
@@ -136,10 +135,10 @@ public class BaseTest {
         }
         return pass;
     }
-
-    protected void takeScreenshot(){
-        String base64Screenshot = "data:image/png;base64," + ((TakesScreenshot) driver).getScreenshotAs(OutputType.BASE64);
-        ExtentManager.getTest().log(LogStatus.INFO, "Test Failed", ExtentManager.getTest().addBase64ScreenShot(base64Screenshot));
-    }
+//
+//    protected void takeScreenshot(){
+//        String base64Screenshot = "data:image/png;base64," + ((TakesScreenshot) driver).getScreenshotAs(OutputType.BASE64);
+//        ExtentManager.getTest().log(LogStatus.INFO, "Test Failed", ExtentManager.getTest().addBase64ScreenShot(base64Screenshot));
+//    }
 
 }

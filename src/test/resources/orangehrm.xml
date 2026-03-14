@@ -3,14 +3,13 @@
 <suite name="Orange HRM">
     <listeners>
        <listener class-name="core.MethodListener"></listener>
-        <listener class-name="reportConfigs.ExtentTestListener"></listener>
     </listeners>
 
     <parameter name="Url" value="http://localhost:8080/orangehrm"/>
     <test name="Run on CHROME" preserve-order="true">
         <parameter name="Browser" value="Chrome"/>
         <classes>
-            <class name="employee.Level_14_Extent"></class>
+            <class name="employee.Level_14_Extent_4"></class>
         </classes>
     </test>
 

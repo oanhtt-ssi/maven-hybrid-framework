@@ -1,5 +1,6 @@
 package core;
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.Color;
@@ -507,7 +508,7 @@ public class BasePage {
 //        return waitListElementInvisible(driver, "//div[contains(@class,'oxd-loading-spinner')]");
 //    }
 
-
+    @Step("Waiting for Loading Spinner undisplay")
     public Boolean isLoadingSpinnerDisappear(WebDriver driver) {
         return waitListElementInvisible(driver, BasePageUI.SPINNER_ICON);
     }

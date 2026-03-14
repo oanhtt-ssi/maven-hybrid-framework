@@ -1,6 +1,7 @@
 package pageObjects.orangehrm;
 
 import core.BasePage;
+import io.qameta.allure.Step;
 import org.openqa.selenium.WebDriver;
 import pageObjects.PageGenerator;
 import pageObjects.orangehrm.editNavigation.PersonalDetailPO;
@@ -12,21 +13,25 @@ public class AddEmployeePO extends BasePage {
         this.driver = driver;
     }
 
+    @Step("Enter to Firstname textbox with value: {0}")
     public void enterToFirstNameTextbox(String firstName) {
         waitElementVisible(driver, AddEmployeeUI.FIRSTNAME_TEXTBOX);
         senKeyToElement(driver, AddEmployeeUI.FIRSTNAME_TEXTBOX, firstName);
     }
 
+    @Step("Enter to Lastname textbox with value: {0}")
     public void enterToLastNameTextbox(String lastName) {
         waitElementVisible(driver, AddEmployeeUI.LASTNAME_TEXTBOX);
         senKeyToElement(driver, AddEmployeeUI.LASTNAME_TEXTBOX, lastName);
     }
 
+    @Step("Get Employee ID from Add Employee page")
     public String getEmployeeIDValue() {
         waitElementPresence(driver, AddEmployeeUI.EMPLOYEE_ID_TEXTBOX);
         return getElementDOMProperty(driver, AddEmployeeUI.EMPLOYEE_ID_TEXTBOX,"value");
     }
 
+    @Step("Click to Save button and navigate to Personal Detail page")
     public void clickToCreateLoginDetailsCheckbox() {
         waitElementClickable(driver, AddEmployeeUI.CREATE_LOGIN_DETAIL_CHECKBOX);
         clickToElement(driver, AddEmployeeUI.CREATE_LOGIN_DETAIL_CHECKBOX);

@@ -3,28 +3,29 @@
 <suite name="Orange HRM">
     <listeners>
        <listener class-name="core.MethodListener"></listener>
-        <listener class-name="reportConfigs.ExtentTestListener"></listener>
+<!--        <listener class-name="reportConfigs.ExtentTestListener"></listener>-->
+        <listener class-name="reportConfigs.ChainTestReport"></listener>
     </listeners>
 
     <parameter name="Url" value="http://localhost:8080/orangehrm"/>
     <test name="Run on CHROME" preserve-order="true">
         <parameter name="Browser" value="Chrome"/>
         <classes>
-            <class name="employee.Level_14_Extent_5"></class>
+            <class name="employee.Level_15_ChainTest"></class>
         </classes>
     </test>
 
     <test name="Run on FIREFOX" preserve-order="true">
         <parameter name="Browser" value="Firefox"/>
         <classes>
-            <class name="employee.Level_14_Extent_5"></class>
+            <class name="employee.Level_15_ChainTest"></class>
         </classes>
     </test>
 
     <test name="Run on Edge" preserve-order="true">
         <parameter name="Browser" value="Edge"/>
         <classes>
-            <class name="employee.Level_14_Extent_5"></class>
+            <class name="employee.Level_15_ChainTest"></class>
         </classes>
     </test>
 

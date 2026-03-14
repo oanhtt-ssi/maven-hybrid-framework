@@ -1,5 +1,8 @@
 package core;
 
+
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.junit.Assert;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -10,8 +13,16 @@ import org.testng.Reporter;
 import java.time.Duration;
 import java.util.Random;
 
+
+
 public class BaseTest {
     private WebDriver driver;
+    protected final Logger log;
+
+    public BaseTest() {
+        this.log = LogManager.getLogger(getClass());
+    }
+
 
     protected WebDriver getBrowserDriver(String browserName) {
         BrowserList browserList = BrowserList.valueOf(browserName.toUpperCase());
@@ -54,18 +65,22 @@ public class BaseTest {
         //driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
         driver.manage().window().maximize();
         driver.get(url);
+        log.info("============ INIT BROWSER & DRIVER ============");
         return driver;
     }
     protected void closeBrowser(){
-        if (!(null == driver)){
+        if (null != driver){
             driver.quit();
         }
+        log.info("============ CLOSE BROWSER & DRIVER ============");
     }
 
     protected void closeBrowser(WebDriver driver){
-        if (!(null == driver)){
+        if (null != driver){
             driver.quit();
         }
+        log.info("============ CLOSE BROWSER & DRIVER ============");
+
     }
     protected int getRandomNumber(){
         return new Random().nextInt(999);
@@ -75,11 +90,13 @@ public class BaseTest {
         boolean pass = true;
         try {
             Assert.assertTrue(condition);
+            log.info("------------------ PASSED ------------------");
         } catch (Throwable e) {
             pass = false;
 
             VerificationFailures.getFailures().addFailureForTest(Reporter.getCurrentTestResult(), e);
             Reporter.getCurrentTestResult().setThrowable(e);
+            log.info("------------------ FAILED ------------------");
         }
         return pass;
     }
@@ -88,10 +105,12 @@ public class BaseTest {
         boolean pass = true;
         try {
             Assert.assertFalse(condition);
+            log.info("------------------ PASSED ------------------");
         } catch (Throwable e) {
             pass = false;
             VerificationFailures.getFailures().addFailureForTest(Reporter.getCurrentTestResult(), e);
             Reporter.getCurrentTestResult().setThrowable(e);
+            log.info("------------------ FAILED ------------------");
         }
         return pass;
     }
@@ -100,10 +119,12 @@ public class BaseTest {
         boolean pass = true;
         try {
             Assert.assertEquals(actual, expected);
+            log.info("------------------ PASSED ------------------");
         } catch (Throwable e) {
             pass = false;
             VerificationFailures.getFailures().addFailureForTest(Reporter.getCurrentTestResult(), e);
             Reporter.getCurrentTestResult().setThrowable(e);
+            log.info("------------------ FAILED ------------------");
         }
         return pass;
     }

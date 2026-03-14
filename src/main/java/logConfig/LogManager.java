@@ -1,4 +1,4 @@
-package logConfigs;
+package logConfig;
 
 public class LogManager {
 }

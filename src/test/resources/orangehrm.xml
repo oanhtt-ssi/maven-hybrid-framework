@@ -9,7 +9,7 @@
     <test name="Run on CHROME" preserve-order="true">
         <parameter name="Browser" value="Chrome"/>
         <classes>
-            <class name="employee.Level_12_Assert_Verify"></class>
+            <class name="employee.Level_13_Logging"></class>
         </classes>
     </test>
 

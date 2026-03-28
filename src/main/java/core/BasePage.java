@@ -10,7 +10,9 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import pageObjects.PageGenerator;
 import pageObjects.openCart.admin.AdminLoginPO;
 import pageObjects.openCart.user.UserHomePO;
+import pageObjects.orangehrm.EmployeeListPO;
 import pageUIs.BasePageUI;
+import pageUIs.orangehrm.DashboardUI;
 
 import java.time.Duration;
 import java.util.List;
@@ -508,10 +510,6 @@ public class BasePage {
 //        return waitListElementInvisible(driver, "//div[contains(@class,'oxd-loading-spinner')]");
 //    }
 
-    @Step("Waiting for Loading Spinner undisplay")
-    public Boolean isLoadingSpinnerDisappear(WebDriver driver) {
-        return waitListElementInvisible(driver, BasePageUI.SPINNER_ICON);
-    }
 
 //OpenCart
     public UserHomePO clickToLogoutLinkAtUserSite(WebDriver driver){
@@ -550,7 +548,79 @@ public class BasePage {
         return String.format(locator, (Object[]) values);
     }
 
+
+    // OrangeHRM
+    @Step("Waiting for Loading Spinner undisplay")
+    public Boolean isLoadingSpinnerDisappear(WebDriver driver) {
+        return waitListElementInvisible(driver, BasePageUI.SPINNER_ICON);
+    }
+
+    @Step("Enter to {0} textbox by label with value {1}")
+    public  void enterToTextboxByLabel(WebDriver driver, String textboxLabel, String valueToSenkey){
+        waitElementVisible(driver, BasePageUI.TEXTBOX_BY_LABEL, textboxLabel);
+        senKeyToElement(driver, BasePageUI.TEXTBOX_BY_LABEL, valueToSenkey, textboxLabel);
+    }
+
+    @Step("Enter to {0} textbox by name with value {1}")
+    public  void enterToTextboxByName(WebDriver driver, String textboxNameAttribute, String valueToSenkey){
+        waitElementVisible(driver, BasePageUI.TEXTBOX_BY_NAME, textboxNameAttribute);
+        senKeyToElement(driver, BasePageUI.TEXTBOX_BY_NAME, valueToSenkey, textboxNameAttribute);
+    }
+
+
+    @Step("Click to {0} button by text")
+    public void clickToButtonByText(WebDriver driver, String buttonText){
+        waitElementClickable(driver, BasePageUI.BUTTON_BY_TEXT, buttonText);
+        clickToElement(driver, BasePageUI.BUTTON_BY_TEXT, buttonText);
+    }
+
+    public void clickToButtonByTextInMainTitle(WebDriver driver, String buttonText, String mainTitleName){
+        waitElementClickable(driver, BasePageUI.BUTTON_BY_TEXT_IN_MAIN_TITLE, mainTitleName, buttonText);
+        clickToElement(driver, BasePageUI.BUTTON_BY_TEXT_IN_MAIN_TITLE, mainTitleName, buttonText);
+    }
+
+
+    public String getTextboxValueByName(WebDriver driver, String textboxNameAttribute) {
+        waitElementVisible(driver, BasePageUI.TEXTBOX_BY_NAME, textboxNameAttribute);
+        return getElementDOMProperty(driver, BasePageUI.TEXTBOX_BY_NAME, "value", textboxNameAttribute);
+    }
+
+    public String getTextboxValueByLabel(WebDriver driver, String textboxLabel) {
+        waitElementVisible(driver, BasePageUI.TEXTBOX_BY_LABEL, textboxLabel);
+        return getElementDOMProperty(driver, BasePageUI.TEXTBOX_BY_LABEL, "value", textboxLabel);
+    }
+
+    @Step("Click to {0} module in Menu item")
+    public void clickToModuleByTextInMenuItem(WebDriver driver, String moduleName) {
+        waitElementClickable(driver, BasePageUI.MODULE_BY_TEXT_IN_MENU_ITEM, moduleName);
+        clickToElement(driver,BasePageUI.MODULE_BY_TEXT_IN_MENU_ITEM, moduleName);
+
+    }
+
+    public void selectDropdownByLabel(WebDriver driver, String labelName, String valueToSelect) {
+        waitElementClickable(driver, BasePageUI.PARENT_DROPDOWN_BY_LABEL, labelName);
+        selectItemInSelectableDropDown(driver, BasePageUI.PARENT_DROPDOWN_BY_LABEL, BasePageUI.CHILD_DROPDOWN_BY_LABEL, valueToSelect, labelName);
+    }
+
+    public boolean isToastMessageDisplayed(WebDriver driver, String toastMessage) {
+        waitElementVisible(driver, BasePageUI.TOAST_MESSAGE_BY_TEXT, toastMessage);
+        return isElementDisplayed(driver, BasePageUI.TOAST_MESSAGE_BY_TEXT, toastMessage);
+    }
+
+    public void clickToRadioByLabel(WebDriver driver, String labelName) {
+        waitElementClickable(driver, BasePageUI.RADIO_BUTTON_BY_LABEL, labelName);
+        clickToElement(driver,BasePageUI.RADIO_BUTTON_BY_LABEL, labelName);
+    }
+
+    public void clickToCheckboxByLabel(WebDriver driver, String labelName) {
+        waitElementClickable(driver, BasePageUI.CHECKBOX_BY_LABEL, labelName);
+        clickToElement(driver,BasePageUI.CHECKBOX_BY_LABEL, labelName);
+    }
+
     private final int SHORT_TIMEOUT = GlobalConstants.SHORT_TIMEOUT;
     private final int LONG_TIMEOUT = GlobalConstants.LONG_TIMEOUT;
+
+
+
 }
 

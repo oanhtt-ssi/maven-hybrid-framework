@@ -1,33 +1,21 @@
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
 
 <suite name="Orange HRM">
-<!--    <listeners>-->
+    <listeners>
 <!--       <listener class-name="core.MethodListener"></listener>-->
 <!--        <listener class-name="reportConfigs.ExtentTestListener"></listener>-->
 <!--        <listener class-name="reportConfigs.ChainTestReport"></listener>-->
 <!--        <listener class-name="reportConfigs.AllureTestListener"></listener>-->
-<!--    </listeners>-->
+    </listeners>
 
     <parameter name="Url" value="http://localhost:8080/orangehrm"/>
     <test name="Run on CHROME" preserve-order="true">
         <parameter name="Browser" value="Chrome"/>
         <classes>
-            <class name="employee.Level_19_Element_Undisplayed"></class>
+            <class name="employee.Level_21_Close_Browser"></class>
         </classes>
     </test>
 
-<!--    <test name="Run on FIREFOX" preserve-order="true">-->
-<!--        <parameter name="Browser" value="Firefox"/>-->
-<!--        <classes>-->
-<!--            <class name="employee.Level_15_ChainTest"></class>-->
-<!--        </classes>-->
-<!--    </test>-->
 
-<!--    <test name="Run on Edge" preserve-order="true">-->
-<!--        <parameter name="Browser" value="Edge"/>-->
-<!--        <classes>-->
-<!--            <class name="employee.Level_15_ChainTest"></class>-->
-<!--        </classes>-->
-<!--    </test>-->
 
 </suite>

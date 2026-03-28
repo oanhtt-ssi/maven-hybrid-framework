@@ -52,6 +52,16 @@ public class BasePage {
         driver.navigate().refresh();
     }
 
+    public Set<Cookie> getPageCookies(WebDriver driver){
+        return driver.manage().getCookies();
+    }
+
+    public void setPageCookies(WebDriver driver, Set<Cookie> cookies){
+        for (Cookie cookie : cookies){
+            driver.manage().addCookie(cookie);
+        }
+    }
+
     private Alert waitAlertPresence(WebDriver driver){
         return new WebDriverWait(driver, Duration.ofSeconds(10))
                 .until(ExpectedConditions.alertIsPresent());

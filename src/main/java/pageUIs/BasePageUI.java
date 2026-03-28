@@ -11,7 +11,10 @@ public class BasePageUI {
     public static final String CHILD_DROPDOWN_BY_LABEL = "Xpath=//label[text() = '%s']/parent::div/following-sibling::div//div[@class='oxd-select-option']/span";
     public static final String TOAST_MESSAGE_BY_TEXT = "Xpath=//p[contains(@class, 'oxd-text--toast-message') and text()='%s']";
     public static final String RADIO_BUTTON_BY_LABEL = "Xpath=//label[text()='%s']/input";
-    public static final String CHECKBOX_BY_LABEL = "Xpath=//p[text()='%s']/following-sibling::div//input";
+    public static final String CHECKBOX_BY_LABEL = "Xpath=//p[text()='%s']/following-sibling::div//span";
+    public static final String USER_DROPDOWN = "Css=p.oxd-userdropdown-name";
+    public static final String LOGOUT_LINK = "Xpath=//a[@class='oxd-userdropdown-link' and text()='Logout']";
+
 
 
     //OpenCart

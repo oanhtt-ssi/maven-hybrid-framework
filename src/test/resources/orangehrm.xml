@@ -12,7 +12,7 @@
     <test name="Run on CHROME" preserve-order="true">
         <parameter name="Browser" value="Chrome"/>
         <classes>
-            <class name="employee.Level_18_Pattern_Object"></class>
+            <class name="employee.Level_19_Element_Undisplayed"></class>
         </classes>
     </test>
 

@@ -11,10 +11,12 @@ import pageObjects.PageGenerator;
 import pageObjects.openCart.admin.AdminLoginPO;
 import pageObjects.openCart.user.UserHomePO;
 import pageObjects.orangehrm.EmployeeListPO;
+import pageObjects.orangehrm.LoginPO;
 import pageUIs.BasePageUI;
 import pageUIs.orangehrm.DashboardUI;
 
 import java.time.Duration;
+import java.util.Date;
 import java.util.List;
 import java.util.Set;
 
@@ -297,11 +299,55 @@ public class BasePage {
     }
 
     public boolean isElementDisplayed(WebDriver driver, String locator){
-        return getWebElement(driver, locator).isDisplayed();
+        boolean status= false;
+        try {
+            WebElement element = getWebElement(driver, locator);
+            status = element.isDisplayed();
+        } catch (NoSuchElementException e) {
+            throw new RuntimeException(e);
+        }
+        return status;
     }
 
     public boolean isElementDisplayed(WebDriver driver, String locator, String... restValue){
-        return getWebElement(driver, castParameter(locator, restValue)).isDisplayed();
+        boolean status= false;
+        try {
+            WebElement element = getWebElement(driver, castParameter(locator, restValue));
+            return element.isDisplayed();
+        } catch (NoSuchElementException e) {
+            return status;
+        }
+
+    }
+    private void overrideGlobalTimeout(WebDriver driver, long timeInSecond){
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(timeInSecond));
+    }
+
+    public boolean isElementUndisplayed(WebDriver driver, String locator){
+        overrideGlobalTimeout(driver, SHORT_TIMEOUT);
+        List<WebElement>element = getListElement(driver, locator);
+        overrideGlobalTimeout(driver, LONG_TIMEOUT);
+
+        if (element.size() == 0){
+            return true;
+        } else if (element.size() > 0 && !element.get(0).isDisplayed()){
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public boolean isElementUndisplayed(WebDriver driver, String locator, String... restValue){
+        overrideGlobalTimeout(driver, SHORT_TIMEOUT);
+        List<WebElement>element = getListElement(driver, castParameter(locator, restValue));
+        overrideGlobalTimeout(driver, LONG_TIMEOUT);
+        if (element.size() == 0){
+            return true;
+        } else if (element.size() > 0 && !element.get(0).isDisplayed()){
+            return true;
+        } else {
+            return false;
+        }
     }
 
     public boolean isElementSelected(WebDriver driver, String locator){
@@ -467,6 +513,11 @@ public class BasePage {
                 .until(ExpectedConditions.invisibilityOfElementLocated(getByLocator(castParameter(locator, restValue))));
     }
 
+    public void waitElementInvisibleNotInDOM(WebDriver driver, String locator, String... restValue){
+        new WebDriverWait(driver, Duration.ofSeconds(SHORT_TIMEOUT))
+                .until(ExpectedConditions.invisibilityOfElementLocated(getByLocator(castParameter(locator, restValue))));
+    }
+
     public boolean waitListElementInvisible(WebDriver driver, String locator){
        return new WebDriverWait(driver, Duration.ofSeconds(LONG_TIMEOUT))
                 .until(ExpectedConditions.invisibilityOfAllElements(getListElement(driver, locator)));
@@ -597,6 +648,17 @@ public class BasePage {
 
     }
 
+
+    public boolean isModuleByTextInMenuItemDisplayed(WebDriver driver, String moduleName) {
+        waitElementVisible(driver, BasePageUI.MODULE_BY_TEXT_IN_MENU_ITEM, moduleName);
+        return isElementDisplayed(driver, BasePageUI.MODULE_BY_TEXT_IN_MENU_ITEM, moduleName);
+    }
+
+    public boolean isModuleByTextInMenuItemUndisplayed(WebDriver driver, String moduleName) {
+        //waitElementInvisibleNotInDOM(driver, BasePageUI.MODULE_BY_TEXT_IN_MENU_ITEM, moduleName);
+        return isElementUndisplayed(driver, BasePageUI.MODULE_BY_TEXT_IN_MENU_ITEM, moduleName);
+    }
+
     public void selectDropdownByLabel(WebDriver driver, String labelName, String valueToSelect) {
         waitElementClickable(driver, BasePageUI.PARENT_DROPDOWN_BY_LABEL, labelName);
         selectItemInSelectableDropDown(driver, BasePageUI.PARENT_DROPDOWN_BY_LABEL, BasePageUI.CHILD_DROPDOWN_BY_LABEL, valueToSelect, labelName);
@@ -617,9 +679,16 @@ public class BasePage {
         clickToElement(driver,BasePageUI.CHECKBOX_BY_LABEL, labelName);
     }
 
+    public LoginPO clickLogoutOnTopMenu(WebDriver driver){
+        waitElementClickable(driver, BasePageUI.USER_DROPDOWN);
+        clickToElement(driver,BasePageUI.USER_DROPDOWN);
+        waitElementClickable(driver, BasePageUI.LOGOUT_LINK);
+        clickToElement(driver,BasePageUI.LOGOUT_LINK);
+        return PageGenerator.getPage(LoginPO.class, driver);
+    }
+
     private final int SHORT_TIMEOUT = GlobalConstants.SHORT_TIMEOUT;
     private final int LONG_TIMEOUT = GlobalConstants.LONG_TIMEOUT;
-
 
 
 }

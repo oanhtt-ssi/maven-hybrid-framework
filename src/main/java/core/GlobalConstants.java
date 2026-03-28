@@ -14,7 +14,7 @@ public class GlobalConstants {
     public static final String LIVE_URL = "https://opensource-demo.orangehrmlive.com";
 
     public static final int SHORT_TIMEOUT = 5;
-    public static final int LONG_TIMEOUT = 15;
+    public static final int LONG_TIMEOUT = 30;
 
     public static final String UPLOAD_PATH = PROJECT_PATH + File.separator + "uploadFiles" + File.separator;
     public static final String DOWNLOAD_PATH = PROJECT_PATH + File.separator + "downloadFiles" + File.separator;
